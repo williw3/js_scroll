@@ -32,10 +32,14 @@
 
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			el.innerHTML =  el.innerHTML + words[word_counter][character_counter++];
+			if(words[word_counter][character_counter] == " ") {
+				el.innerHTML = el.innerHTML + "&nbsp;" //added space to cursor
+			}
 
-			if(character_counter == words[word_counter].length)
+			if(character_counter == words[word_counter].length + 1) //prints last character 
 			{
+
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
 				el.innerHTML = '';  //set the html to be blank
@@ -44,9 +48,10 @@
 				if(word_counter == words.length)
 					word_counter = 0;
 			}
+
 		}
 
-		setInterval(updateText,300);
+		setInterval(updateText,400);
 
 	</script>
 
